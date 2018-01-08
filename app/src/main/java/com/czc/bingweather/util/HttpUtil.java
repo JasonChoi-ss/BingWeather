@@ -1,4 +1,4 @@
-package com.czc.coolweather.util;
+package com.czc.bingweather.util;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

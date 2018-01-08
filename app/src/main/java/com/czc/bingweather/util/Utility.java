@@ -1,13 +1,11 @@
-package com.czc.coolweather.util;
+package com.czc.bingweather.util;
 
 import android.text.TextUtils;
-
-import com.czc.coolweather.db.City;
-import com.czc.coolweather.db.County;
-import com.czc.coolweather.db.Province;
-import com.czc.coolweather.gson.Weather;
+import com.czc.bingweather.db.City;
+import com.czc.bingweather.db.County;
+import com.czc.bingweather.db.Province;
+import com.czc.bingweather.gson.Weather;
 import com.google.gson.Gson;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

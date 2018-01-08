@@ -1,4 +1,4 @@
-package com.czc.coolweather.gson;
+package com.czc.bingweather.gson;
 
 public class AQI {
 

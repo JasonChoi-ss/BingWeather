@@ -1,4 +1,4 @@
-package com.czc.coolweather.db;
+package com.czc.bingweather.db;
 
 import org.litepal.crud.DataSupport;
 

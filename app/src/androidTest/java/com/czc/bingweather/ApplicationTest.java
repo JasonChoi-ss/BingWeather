@@ -1,4 +1,4 @@
-package com.czc.coolweather;
+package com.czc.bingweather;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

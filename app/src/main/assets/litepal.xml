@@ -6,9 +6,9 @@
     <version value="1" />
 
     <list>
-        <mapping class="com.czc.coolweather.db.Province" />
-        <mapping class="com.czc.coolweather.db.City" />
-        <mapping class="com.czc.coolweather.db.County" />
+        <mapping class="com.czc.bingweather.db.Province"/>
+        <mapping class="com.czc.bingweather.db.City"/>
+        <mapping class="com.czc.bingweather.db.County"/>
     </list>
 
 </litepal>

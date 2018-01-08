@@ -1,4 +1,4 @@
-package com.czc.coolweather.gson;
+package com.czc.bingweather.gson;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,4 +1,4 @@
-package com.czc.coolweather;
+package com.czc.bingweather;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -7,39 +7,27 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.czc.coolweather.db.City;
-import com.czc.coolweather.db.County;
-import com.czc.coolweather.db.Province;
-import com.czc.coolweather.util.HttpUtil;
-import com.czc.coolweather.util.Utility;
-
+import android.widget.*;
+import com.czc.bingweather.db.City;
+import com.czc.bingweather.db.County;
+import com.czc.bingweather.db.Province;
+import com.czc.bingweather.util.HttpUtil;
+import com.czc.bingweather.util.Utility;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 import org.litepal.crud.DataSupport;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
-
 public class ChooseAreaFragment extends Fragment {
 
-    private static final String TAG = "ChooseAreaFragment";
-
     public static final int LEVEL_PROVINCE = 0;
-
     public static final int LEVEL_CITY = 1;
-
     public static final int LEVEL_COUNTY = 2;
-
+    private static final String TAG = "ChooseAreaFragment";
     private ProgressDialog progressDialog;
 
     private TextView titleText;
@@ -87,9 +75,9 @@ public class ChooseAreaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.choose_area, container, false);
-        titleText = (TextView) view.findViewById(R.id.title_text);
-        backButton = (Button) view.findViewById(R.id.back_button);
-        listView = (ListView) view.findViewById(R.id.list_view);
+        titleText = view.findViewById(R.id.title_text);
+        backButton = view.findViewById(R.id.back_button);
+        listView = view.findViewById(R.id.list_view);
         adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, dataList);
         listView.setAdapter(adapter);
         return view;

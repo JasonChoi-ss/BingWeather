@@ -1,4 +1,4 @@
-package com.czc.coolweather.service;
+package com.czc.bingweather.service;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -8,10 +8,10 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
-import com.czc.coolweather.R;
-import com.czc.coolweather.gson.Weather;
-import com.czc.coolweather.util.HttpUtil;
-import com.czc.coolweather.util.Utility;
+import com.czc.bingweather.R;
+import com.czc.bingweather.gson.Weather;
+import com.czc.bingweather.util.HttpUtil;
+import com.czc.bingweather.util.Utility;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
