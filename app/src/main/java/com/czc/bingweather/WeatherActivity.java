@@ -26,39 +26,39 @@ import okhttp3.Response;
 import java.io.IOException;
 
 public class WeatherActivity extends AppCompatActivity {
-
+    
     public DrawerLayout drawerLayout;
-
+    
     public SwipeRefreshLayout swipeRefresh;
-
+    
     private ScrollView weatherLayout;
-
+    
     private Button navButton;
-
+    
     private TextView titleCity;
-
+    
     private TextView titleUpdateTime;
-
+    
     private TextView degreeText;
-
+    
     private TextView weatherInfoText;
-
+    
     private LinearLayout forecastLayout;
-
+    
     private TextView aqiText;
-
+    
     private TextView pm25Text;
-
+    
     private TextView comfortText;
-
+    
     private TextView carWashText;
-
+    
     private TextView sportText;
-
+    
     private ImageView bingPicImg;
-
+    
     private String mWeatherId;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,12 +118,12 @@ public class WeatherActivity extends AppCompatActivity {
             loadBingPic();
         }
     }
-
+    
     /**
      * 根据天气id请求城市天气信息。
      */
     public void requestWeather(final String weatherId) {
-        String weatherUrl = "http://guolin.tech/api/weather?cityid=" + weatherId + "&key="+R.string.key;
+        String weatherUrl = "http://guolin.tech/api/weather?cityid=" + weatherId + "&key=e26bbfcd764f4b05ae859a4e5d35e71f";
         HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
@@ -145,7 +145,7 @@ public class WeatherActivity extends AppCompatActivity {
                     }
                 });
             }
-
+    
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
@@ -160,7 +160,7 @@ public class WeatherActivity extends AppCompatActivity {
         });
         loadBingPic();
     }
-
+    
     /**
      * 加载必应每日一图
      */
@@ -180,14 +180,14 @@ public class WeatherActivity extends AppCompatActivity {
                     }
                 });
             }
-
+    
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
             }
         });
     }
-
+    
     /**
      * 处理并展示Weather实体类中的数据。
      */
@@ -227,5 +227,5 @@ public class WeatherActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AutoUpdateService.class);
         startService(intent);
     }
-
+    
 }

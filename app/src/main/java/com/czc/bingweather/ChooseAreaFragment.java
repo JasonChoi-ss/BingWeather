@@ -23,54 +23,54 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChooseAreaFragment extends Fragment {
-
+    
     public static final int LEVEL_PROVINCE = 0;
     public static final int LEVEL_CITY = 1;
     public static final int LEVEL_COUNTY = 2;
     private static final String TAG = "ChooseAreaFragment";
     private ProgressDialog progressDialog;
-
+    
     private TextView titleText;
-
+    
     private Button backButton;
-
+    
     private ListView listView;
-
+    
     private ArrayAdapter<String> adapter;
-
+    
     private List<String> dataList = new ArrayList<>();
-
+    
     /**
      * 省列表
      */
     private List<Province> provinceList;
-
+    
     /**
      * 市列表
      */
     private List<City> cityList;
-
+    
     /**
      * 县列表
      */
     private List<County> countyList;
-
+    
     /**
      * 选中的省份
      */
     private Province selectedProvince;
-
+    
     /**
      * 选中的城市
      */
     private City selectedCity;
-
+    
     /**
      * 当前选中的级别
      */
     private int currentLevel;
-
-
+    
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -82,7 +82,7 @@ public class ChooseAreaFragment extends Fragment {
         listView.setAdapter(adapter);
         return view;
     }
-
+    
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -123,7 +123,7 @@ public class ChooseAreaFragment extends Fragment {
         });
         queryProvinces();
     }
-
+    
     /**
      * 查询全国所有的省，优先从数据库查询，如果没有查询到再去服务器上查询。
      */
@@ -144,7 +144,7 @@ public class ChooseAreaFragment extends Fragment {
             queryFromServer(address, "province");
         }
     }
-
+    
     /**
      * 查询选中省内所有的市，优先从数据库查询，如果没有查询到再去服务器上查询。
      */
@@ -166,7 +166,7 @@ public class ChooseAreaFragment extends Fragment {
             queryFromServer(address, "city");
         }
     }
-
+    
     /**
      * 查询选中市内所有的县，优先从数据库查询，如果没有查询到再去服务器上查询。
      */
@@ -189,7 +189,7 @@ public class ChooseAreaFragment extends Fragment {
             queryFromServer(address, "county");
         }
     }
-
+    
     /**
      * 根据传入的地址和类型从服务器上查询省市县数据。
      */
@@ -199,7 +199,7 @@ public class ChooseAreaFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String responseText = response.body().string();
-                    boolean result = false;
+                boolean result = false;
                 if ("province".equals(type)) {
                     result = Utility.handleProvinceResponse(responseText);
                 } else if ("city".equals(type)) {
@@ -223,7 +223,7 @@ public class ChooseAreaFragment extends Fragment {
                     });
                 }
             }
-
+    
             @Override
             public void onFailure(Call call, IOException e) {
                 // 通过runOnUiThread()方法回到主线程处理逻辑
@@ -237,7 +237,7 @@ public class ChooseAreaFragment extends Fragment {
             }
         });
     }
-
+    
     /**
      * 显示进度对话框
      */
@@ -249,7 +249,7 @@ public class ChooseAreaFragment extends Fragment {
         }
         progressDialog.show();
     }
-
+    
     /**
      * 关闭进度对话框
      */
@@ -258,5 +258,5 @@ public class ChooseAreaFragment extends Fragment {
             progressDialog.dismiss();
         }
     }
-
+    
 }

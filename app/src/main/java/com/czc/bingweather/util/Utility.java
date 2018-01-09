@@ -11,7 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Utility {
-
+    
     /**
      * 解析和处理服务器返回的省级数据
      */
@@ -33,7 +33,7 @@ public class Utility {
         }
         return false;
     }
-
+    
     /**
      * 解析和处理服务器返回的市级数据
      */
@@ -56,7 +56,7 @@ public class Utility {
         }
         return false;
     }
-
+    
     /**
      * 解析和处理服务器返回的县级数据
      */
@@ -79,7 +79,7 @@ public class Utility {
         }
         return false;
     }
-
+    
     /**
      * 将返回的JSON数据解析成Weather实体类
      */
@@ -94,5 +94,5 @@ public class Utility {
         }
         return null;
     }
-
+    
 }

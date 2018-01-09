@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
-import com.czc.bingweather.R;
 import com.czc.bingweather.gson.Weather;
 import com.czc.bingweather.util.HttpUtil;
 import com.czc.bingweather.util.Utility;
@@ -19,12 +18,12 @@ import okhttp3.Response;
 import java.io.IOException;
 
 public class AutoUpdateService extends Service {
-
+    
     @Override
     public IBinder onBind(Intent intent) {
         return null;
     }
-
+    
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         updateWeather();
@@ -38,18 +37,18 @@ public class AutoUpdateService extends Service {
         manager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerAtTime, pi);
         return super.onStartCommand(intent, flags, startId);
     }
-
+    
     /**
      * 更新天气信息。
      */
-    private void updateWeather(){
+    private void updateWeather() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String weatherString = prefs.getString("weather", null);
         if (weatherString != null) {
             // 有缓存时直接解析天气数据
             Weather weather = Utility.handleWeatherResponse(weatherString);
             String weatherId = weather.basic.weatherId;
-            String weatherUrl = "http://guolin.tech/api/weather?cityid=" + weatherId + "&key="+ R.string.key;
+            String weatherUrl = "http://guolin.tech/api/weather?cityid=" + weatherId + "&key=e26bbfcd764f4b05ae859a4e5d35e71f";
             HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
@@ -61,7 +60,7 @@ public class AutoUpdateService extends Service {
                         editor.apply();
                     }
                 }
-
+    
                 @Override
                 public void onFailure(Call call, IOException e) {
                     e.printStackTrace();
@@ -69,7 +68,7 @@ public class AutoUpdateService extends Service {
             });
         }
     }
-
+    
     /**
      * 更新必应每日一图
      */
@@ -83,12 +82,12 @@ public class AutoUpdateService extends Service {
                 editor.putString("bing_pic", bingPic);
                 editor.apply();
             }
-
+    
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
             }
         });
     }
-
+    
 }
