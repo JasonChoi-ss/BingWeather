@@ -4,7 +4,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#fff"
+        android:background="#b4000000"
         android:fitsSystemWindows="true">
 
     <RelativeLayout
@@ -32,7 +32,6 @@
 
     <ListView
             android:id="@+id/list_view"
-            android:background="@color/background_dark"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
