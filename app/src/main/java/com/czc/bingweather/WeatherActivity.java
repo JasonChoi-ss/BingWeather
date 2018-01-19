@@ -14,7 +14,13 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
 import com.czc.bingweather.gson.Forecast;
 import com.czc.bingweather.gson.Suggestion;
@@ -22,11 +28,12 @@ import com.czc.bingweather.gson.Weather;
 import com.czc.bingweather.service.AutoUpdateService;
 import com.czc.bingweather.util.HttpUtil;
 import com.czc.bingweather.util.Utility;
+
+import java.io.IOException;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
-
-import java.io.IOException;
 
 public class WeatherActivity extends AppCompatActivity {
     
@@ -94,6 +101,7 @@ public class WeatherActivity extends AppCompatActivity {
         degreeText = findViewById(R.id.degree_text);
         weatherInfoText = findViewById(R.id.weather_info_text);
         forecastLayout = findViewById(R.id.forecast_layout);
+        //todo 这是需要连接另一个api接口
         //aqiText = findViewById(R.id.aqi_text);
         //pm25Text = findViewById(R.id.pm25_text);
         comfortText = findViewById(R.id.comfort_text);

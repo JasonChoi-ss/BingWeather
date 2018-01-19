@@ -8,14 +8,16 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
+
 import com.czc.bingweather.gson.Weather;
 import com.czc.bingweather.util.HttpUtil;
 import com.czc.bingweather.util.Utility;
+
+import java.io.IOException;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
-
-import java.io.IOException;
 
 public class AutoUpdateService extends Service {
     
