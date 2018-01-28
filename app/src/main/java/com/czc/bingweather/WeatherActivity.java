@@ -84,7 +84,7 @@ public class WeatherActivity extends AppCompatActivity {
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //测试一些
+        //master测试一些
         super.onCreate(savedInstanceState);
         if (Build.VERSION.SDK_INT >= 21) {
             View decorView = getWindow().getDecorView();
