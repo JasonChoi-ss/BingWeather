@@ -3,11 +3,7 @@ package com.czc.bingweather.db;
 import org.litepal.crud.DataSupport;
 
 public class City extends DataSupport {
-    //et
-    //master1
-    //master2
-    //dev1
-    //dev2
+    
     private int id;
     private String cityName;
     private int cityCode;
