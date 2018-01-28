@@ -4,6 +4,7 @@ import org.litepal.crud.DataSupport;
 
 public class City extends DataSupport {
     //master1
+    //master2
     //dev1
     //dev2
     private int id;
