@@ -36,56 +36,57 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class WeatherActivity extends AppCompatActivity {
-    
+
     public DrawerLayout drawerLayout;
-    
+
     public SwipeRefreshLayout swipeRefresh;
-    
+
     private ScrollView weatherLayout;
-    
+
     private Button navButton;
-    
+
     private TextView titleCity;
-    
+
     private TextView titleUpdateTime;
-    
+
     private TextView degreeText;
-    
+
     private TextView weatherInfoText;
-    
+
     private LinearLayout forecastLayout;
-    
+
     private TextView aqiText;
-    
+
     private TextView pm25Text;
-    
+
     private TextView tgText;
-    
+
     private TextView flText;
-    
+
     private TextView fsText;
-    
+
     private TextView sdText;
-    
+
     private TextView jslText;
-    
+
     private TextView qyText;
-    
+
     private TextView comfortText;
-    
+
     private TextView carWashText;
-    
+
     private TextView sportText;
-    
+
     private ImageView bingPicImg;
-    
+
     private String mWeatherId;
-    
+
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //master测试一些
+
         super.onCreate(savedInstanceState);
+
         if (Build.VERSION.SDK_INT >= 21) {
             View decorView = getWindow().getDecorView();
             decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
@@ -93,7 +94,7 @@ public class WeatherActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
         setContentView(R.layout.activity_weather);
-        
+
         // 初始化各控件
         bingPicImg = findViewById(R.id.bing_pic_img);
         weatherLayout = findViewById(R.id.weather_layout);
@@ -118,10 +119,10 @@ public class WeatherActivity extends AppCompatActivity {
         sdText = findViewById(R.id.sd_text);
         jslText = findViewById(R.id.jsl_text);
         qyText = findViewById(R.id.qy_text);
-        
+
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String weatherString = prefs.getString("weather", null);
-        
+
         if (weatherString != null) {
             // 有缓存时直接解析天气数据
             Weather weather = Utility.handleWeatherResponse(weatherString);
@@ -152,7 +153,7 @@ public class WeatherActivity extends AppCompatActivity {
             loadBingPic();
         }
     }
-    
+
     /**
      * 根据天气id请求城市天气信息。
      */
@@ -179,7 +180,7 @@ public class WeatherActivity extends AppCompatActivity {
                     }
                 });
             }
-    
+
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
@@ -194,7 +195,7 @@ public class WeatherActivity extends AppCompatActivity {
         });
         loadBingPic();
     }
-    
+
     /**
      * 加载必应每日一图
      */
@@ -214,14 +215,14 @@ public class WeatherActivity extends AppCompatActivity {
                     }
                 });
             }
-    
+
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
             }
         });
     }
-    
+
     /**
      * 处理并展示Weather实体类中的数据。
      */
@@ -235,7 +236,7 @@ public class WeatherActivity extends AppCompatActivity {
         degreeText.setText(degree);
         weatherInfoText.setText(weatherInfo);
         forecastLayout.removeAllViews();
-    
+
         for (Forecast forecast : weather.forecastList) {
             View view = LayoutInflater.from(this).inflate(R.layout.forecast_item, forecastLayout, false);
             TextView dateText = view.findViewById(R.id.date_text);
@@ -262,12 +263,12 @@ public class WeatherActivity extends AppCompatActivity {
                 carWash = "洗车指数：" + suggestion.info;
             if (suggestion.type.equals("sport"))
                 sport = "运行建议：" + suggestion.info;
-        
+
         }
         comfortText.setText(comfort);
         carWashText.setText(carWash);
         sportText.setText(sport);
-    
+
         String tg = weather.now.fl + "℃";
         String fl = weather.now.wind_sc;
         String fs = weather.now.wind_dir + " " + weather.now.wind_spd + "km/h";
@@ -280,10 +281,10 @@ public class WeatherActivity extends AppCompatActivity {
         sdText.setText(sd);
         jslText.setText(jsl);
         qyText.setText(qy);
-        
+
         weatherLayout.setVisibility(View.VISIBLE);
         Intent intent = new Intent(this, AutoUpdateService.class);
         startService(intent);
     }
-    
+
 }
